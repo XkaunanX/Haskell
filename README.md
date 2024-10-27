@@ -6,5 +6,5 @@
 - Stack 3.1.1 
 
 # Comandos
-c:\\> ghc test.hs -o test
-c:\\> test.exe
+- ghc test.hs -o test
+- test.exe
