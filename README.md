@@ -1,3 +1,3 @@
 # Comandos
-- Compilar c\:> ghc test.hs -o test
-- Ejecutar c\:> test.exe
+- Compilar > ghc test.hs -o test
+- Ejecutar > test.exe
