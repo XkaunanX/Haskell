@@ -4,5 +4,5 @@
 - ghc-9.4.8.exe
 
 # Comandos
-- Compilar  ghc test.hs -o test
-- Ejecutar  test.exe
+- Compilar     ghc test.hs -o test
+- Ejecutar     test.exe
