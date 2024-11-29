@@ -18,7 +18,7 @@ sumarPares (x:xs)
 restarImpares :: [Int] -> Int
 restarImpares [] = 0
 restarImpares (x:xs)
-    | x `mod` 2 /= 0 = - x + restarImpares xs
+    | x `mod` 2 /= 0 = -x + restarImpares xs
     | otherwise      = restarImpares xs
 
 main :: IO ()
