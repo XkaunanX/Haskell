@@ -2,6 +2,25 @@
 
 En Haskell, las listas son una de las estructuras de datos mas utilizadas debido a su simplicidad y flexibilidad. Las listas permiten almacenar y manipular colecciones de elementos del mismo tipo.
 
+Ejemplo: 
+
+```haskell
+-- Función para manejar el item (sumarle 1)
+procesarItem :: Int -> Int
+procesarItem x = x + 1
+
+-- Función para manejar la lista (aplicar procesarItem a cada elemento)
+procesarLista :: [Int] -> [Int]
+procesarLista lista = map procesarItem lista
+
+-- Ejemplo de uso
+main :: IO ()
+main = do
+  let lista = [1, 2, 3, 4, 5]
+  let resultado = procesarLista lista
+  print resultado
+```
+
 ## Caracteristicas de las Listas
 
 - **Homogeneas**: Todos los elementos en una lista deben ser del mismo tipo.
