@@ -128,9 +128,11 @@ primerosCinco = take 5 numerosNaturales
 
 - **Sin Efectos Secundarios**: La ausencia de efectos secundarios en Haskell hace que el lenguaje sea especialmente adecuado para la programacion concurrente y paralela, ya que los cambios en el estado global no afectan el comportamiento de otras partes del programa. Esto facilita la razonabilidad del codigo y la ejecucion en entornos concurrentes.
 
-- **Tratamiento de Errores con Monadas**: Haskell utiliza el concepto de monadas para manejar efectos secundarios y errores de manera funcional. Las monadas permiten modelar operaciones que pueden tener efectos secundarios (como la lectura de un archivo o la entrada del usuario) de una manera que mantiene la pureza funcional del lenguaje.
+## Tratamiento de Errores con Monadas
 
-## Qué son las Mónadas
+Haskell utiliza el concepto de **monadas** para manejar efectos secundarios y errores de manera funcional. Las monadas permiten modelar operaciones que pueden tener efectos secundarios (como la lectura de un archivo o la entrada del usuario) de una manera que mantiene la pureza funcional del lenguaje.
+
+### Qué son las Mónadas
 
 Las mónadas son estructuras que permiten:
 
@@ -138,18 +140,18 @@ Las mónadas son estructuras que permiten:
 2. **Encadenar operaciones**: Facilitan la ejecución secuencial de operaciones, propagando errores automáticamente.
 3. **Mantener la pureza funcional**: Al encapsular efectos secundarios, las mónadas evitan modificaciones del estado global y aseguran que las funciones sigan siendo predecibles.
 
-## Principales Mónadas para Manejo de Errores
+### Principales Mónadas para Manejo de Errores
 
-### Mónada `Maybe`
+#### Mónada `Maybe`
 
 La mónada `Maybe` se utiliza para representar cálculos que pueden fallar. Tiene dos posibles valores:
 
 - `Just x`: Indica que el cálculo fue exitoso y devolvió el valor `x`.
 - `Nothing`: Indica que el cálculo falló.
 
-Esta estructura es útil cuando se requiere modelar la ausencia de un valor sin necesidad de usar valores nulos.
+Esta estructura es útil para modelar la ausencia de un valor sin usar valores nulos.
 
-### Mónada `Either`
+#### Mónada `Either`
 
 La mónada `Either` extiende la funcionalidad de `Maybe` permitiendo agregar información sobre el error. Tiene dos posibles valores:
 
@@ -161,7 +163,7 @@ La mónada `Either` extiende la funcionalidad de `Maybe` permitiendo agregar inf
 ## Características del Uso de Mónadas para Manejo de Errores
 
 1. **Encapsulación de Errores**: Las mónadas encapsulan errores de forma segura, eliminando la necesidad de manejar excepciones o valores nulos.
-2. **Propagación Automática**: Los errores se propagan automáticamente a través de las operaciones encadenadas, evitando la necesidad de comprobaciones manuales en cada paso.
+2. **Propagación Automática**: Los errores se propagan automáticamente a través de las operaciones encadenadas, evitando comprobaciones manuales en cada paso.
 3. **Separación de Responsabilidades**: Permiten separar la lógica principal del manejo de errores, mejorando la claridad y modularidad del código.
 4. **Pureza Funcional**: Al tratar los errores como datos, se evita la dependencia de estados mutables o efectos secundarios.
 
@@ -170,4 +172,3 @@ La mónada `Either` extiende la funcionalidad de `Maybe` permitiendo agregar inf
 - **Claridad**: Proveen una forma explícita y declarativa de manejar errores.
 - **Reusabilidad**: Las funciones que operan sobre mónadas son más fáciles de reutilizar debido a su naturaleza genérica.
 - **Control**: Facilitan un control preciso sobre cómo se manejan y propagan los errores en un programa.
-
