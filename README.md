@@ -12,6 +12,12 @@ Haskell surgio como un intento de estandarizar los lenguajes funcionales, unific
   
 - **Uso de Punteros**: A diferencia de muchos lenguajes imperativos como C, Haskell no utiliza punteros de forma explicita. En su lugar, la gestion de la memoria es realizada por el recolector de basura, y las estructuras de datos son inmutables.
 
+- **Lenguaje Compilado**: Haskell es un lenguaje **compilado**, puramente funcional, y de alto nivel, diseñado para resolver problemas con un enfoque declarativo y basado en funciones matemáticas. Su sistema de compilación traduce el código fuente a un binario optimizado que puede ejecutarse directamente en la máquina objetivo. Los compiladores de Haskell, como GHC (Glasgow Haskell Compiler), aplican optimizaciones avanzadas como la eliminación de código redundante y la evaluación estricta cuando es necesario.
+
+```bash
+ghc test.hs -o test
+```
+
 - **Paradigma**: Haskell sigue el paradigma de programacion funcional. La programacion funcional se basa en el uso de funciones como ciudadanos de primera clase y en la evitacion de los efectos secundarios. Entre sus caracteristicas se incluye la **transparencia referencial**, lo que significa que una expresion siempre devolvera el mismo resultado cuando se le pase el mismo conjunto de parametros.
 
 ### Caracteristicas del Paradigma Funcional en Haskell
