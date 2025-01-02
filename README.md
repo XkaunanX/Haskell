@@ -14,12 +14,28 @@ Haskell surgio como un intento de estandarizar los lenguajes funcionales, unific
 
 - **Paradigma**: Haskell sigue el paradigma de programacion funcional. La programacion funcional se basa en el uso de funciones como ciudadanos de primera clase y en la evitacion de los efectos secundarios. Entre sus caracteristicas se incluye la **transparencia referencial**, lo que significa que una expresion siempre devolvera el mismo resultado cuando se le pase el mismo conjunto de parametros.
 
-- **Tipo de Tipado**: Haskell es un lenguaje **fuertemente tipado** y tiene un sistema de tipos estatico. Esto significa que los tipos de datos son conocidos en tiempo de compilacion y que no es posible realizar operaciones entre tipos incompatibles sin una conversion explicita. Esto ayuda a prevenir muchos errores comunes en tiempo de ejecucion.
+### Caracteristicas del Paradigma Funcional en Haskell
 
-- **Compilado**: Haskell es un lenguaje compilado. El compilador de Haskell, como GHC (Glasgow Haskell Compiler), traduce el codigo fuente a codigo maquina optimizado antes de su ejecucion. Esto asegura un alto rendimiento, a pesar de ser un lenguaje funcional.
+- **Funciones como Ciudadanos de Primera Clase**: En Haskell, las funciones son tratadas como valores. Esto significa que las funciones pueden ser pasadas como parametros, retornadas como resultados, y almacenadas en variables. Esto permite una gran flexibilidad en el diseño y estructura de los programas.
 
-- **Funciones en Haskell**: Las funciones en Haskell son **ciudadanos de primera clase**, lo que significa que pueden ser pasadas como argumentos, retornadas como resultados y almacenadas en variables. Las funciones son **puramente funcionales**, lo que implica que no tienen efectos secundarios. Esto facilita la razonabilidad matematica del codigo.
+- **Inmutabilidad**: En la programacion funcional, las variables no se pueden modificar una vez que han sido asignadas. Esto se conoce como inmutabilidad. En Haskell, todas las estructuras de datos son inmutables por defecto, lo que ayuda a evitar errores relacionados con cambios inesperados en los valores.
 
-- **Tipos Polimorficos**: Haskell soporta el **tipado polimorfico**, lo que permite escribir funciones generales que pueden trabajar con cualquier tipo de dato. Esto se logra mediante el uso de **tipos genericos** (por ejemplo, `a` en una funcion que puede aceptar cualquier tipo de dato). El sistema de tipos de Haskell es muy potente, permitiendo la creacion de funciones reutilizables y flexibles.
+- **Recursividad**: La recursividad es una herramienta central en la programacion funcional. En lugar de usar bucles iterativos, las funciones en Haskell tienden a ser definidas recursivamente. La recursividad permite que los problemas sean descompuestos en subproblemas más pequeños y manejables.
 
-- **Operadores**: En Haskell, los operadores son funciones, y como tales, pueden ser utilizados en expresiones algebraicas o como funciones ordinarias. Los operadores son definidos mediante funciones y pueden ser utilizados con cualquier tipo de dato que sea compatible con la operacion que realizan. Ademas, Haskell permite la definicion de nuevos operadores por parte del programador.
+- **Funciones Puramente Funcionales**: Las funciones en Haskell no tienen efectos secundarios, es decir, no alteran el estado del programa ni interactuan con el mundo exterior (como la entrada/salida o la modificacion de variables globales). Esto se conoce como pureza funcional, y hace que las funciones sean más predecibles y fáciles de razonar.
+
+- **Composicion de Funciones**: La composicion de funciones es un principio fundamental en la programacion funcional. En Haskell, las funciones pueden ser combinadas para formar nuevas funciones. La composicion permite construir programas modulares y reutilizables.
+
+- **Evaluacion Perezosa (Lazy Evaluation)**: Haskell utiliza evaluacion perezosa, lo que significa que las expresiones no se evaluan hasta que realmente son necesarias. Esto permite la creacion de estructuras de datos infinitas y mejora la eficiencia al evitar el calculo de valores innecesarios.
+
+- **Tipo de Tipado**: Haskell tiene un sistema de tipos estatico y fuerte. Los tipos son inferidos automaticamente por el compilador, lo que permite al programador escribir codigo sin tener que especificar todos los tipos de manera explicita. El sistema de tipos tambien soporta el tipado polimorfico, lo que permite escribir funciones generales que pueden operar sobre una variedad de tipos de datos.
+
+- **Modularidad y Abstraccion**: En Haskell, la modularidad se logra mediante el uso de funciones puras y la composicion de funciones. Los programas pueden ser estructurados en modulos, cada uno de los cuales contiene funciones y tipos que se pueden reutilizar en otros modulos. La abstraccion es proporcionada por los tipos de datos algebraicos, que permiten definir nuevos tipos de datos en terminos de tipos existentes.
+
+- **Transparencia Referencial**: Un principio importante de la programacion funcional es la transparencia referencial. Esto significa que una expresion puede ser reemplazada por su valor sin cambiar el comportamiento del programa. Esto hace que el codigo sea más facil de entender y predecir.
+
+- **Eficiencia**: Aunque Haskell es un lenguaje funcional y de alto nivel, su sistema de tipos y la evaluacion perezosa permiten escribir programas altamente eficientes. Haskell es capaz de optimizar el uso de memoria y la ejecucion del programa gracias a la evaluacion selectiva y la reutilizacion de resultados previamente calculados.
+
+- **Sin Efectos Secundarios**: La ausencia de efectos secundarios en Haskell hace que el lenguaje sea especialmente adecuado para la programacion concurrente y paralela, ya que los cambios en el estado global no afectan el comportamiento de otras partes del programa. Esto facilita la razonabilidad del codigo y la ejecucion en entornos concurrentes.
+
+- **Tratamiento de Errores con Monadas**: Haskell utiliza el concepto de monadas para manejar efectos secundarios y errores de manera funcional. Las monadas permiten modelar operaciones que pueden tener efectos secundarios (como la lectura de un archivo o la entrada del usuario) de una manera que mantiene la pureza funcional del lenguaje.
