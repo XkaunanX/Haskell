@@ -2,6 +2,17 @@
 
 En Haskell, las funciones de alto orden son aquellas que pueden recibir otras funciones como argumentos o devolver funciones como resultado. Estas funciones son fundamentales en la programación funcional, ya que permiten una gran flexibilidad y abstracción. A continuación, se describen algunas de las funciones de alto orden más comunes en Haskell.
 
+```haskell
+-- Ejemplo de uso de map
+doblar :: Int -> Int
+doblar x = x * 2
+
+-- Aplicar la funcion "doblar" a cada elemento de la lista
+resultado = map doblar [1, 2, 3, 4, 5]
+
+-- resultado: [2, 4, 6, 8, 10]
+```
+
 ## Características Clave
 
 - **Reciben funciones como argumentos**: Las funciones de alto orden pueden tomar otras funciones como entradas, permitiendo componer y aplicar comportamientos de manera flexible.
