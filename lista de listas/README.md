@@ -2,6 +2,8 @@
 
 Las listas de listas en Haskell son estructuras de datos donde cada elemento de la lista es a su vez una lista. Estas estructuras son utiles para representar datos jerarquicos o matrices, donde las sublistas pueden tener diferentes tamaños y contener otros tipos de datos.
 
+Ejemplo:
+
 ```haskell
 -- Función para manejar el item (sumarle 1)
 procesarItem :: Int -> Int
