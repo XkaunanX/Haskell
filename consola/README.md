@@ -12,6 +12,29 @@ En Haskell, el manejo de entrada y salida (IO) se realiza a traves de una serie 
 
 - **Operaciones comunes de IO**: Algunas de las operaciones comunes en IO incluyen leer y escribir archivos, leer desde la entrada estándar (como el teclado), y escribir en la salida estándar (como la pantalla).
 
+# Clase IO en Haskell
+
+La clase `IO` en Haskell es fundamental para manejar la entrada y salida de datos, como leer o escribir en archivos, interactuar con el usuario, o mostrar información en la pantalla. Haskell es un lenguaje funcional puro, lo que significa que evita efectos secundarios, como la entrada o salida directa, en funciones estándar. Sin embargo, el manejo de efectos secundarios es necesario en muchos casos, y es aquí donde la clase `IO` juega un papel clave.
+
+## Características principales
+
+- **Encapsulación de efectos secundarios**: Las acciones de tipo `IO` encapsulan los efectos secundarios, asegurando que el resto del programa permanezca puro. Por ejemplo, leer un archivo o escribir en la pantalla no es realizado de inmediato, sino que se representa como una acción de tipo `IO`.
+  
+- **Composición de acciones secuenciales**: Las acciones de `IO` se pueden encadenar y componer de forma secuencial usando el operador `do`. Esto permite que las operaciones de entrada y salida se realicen en el orden correcto.
+
+- **Manejo del mundo externo**: Las acciones de tipo `IO` se usan para interactuar con el mundo exterior, pero sin afectar la pureza funcional del lenguaje. Las funciones que manejan la entrada/salida tienen tipos como `IO String` o `IO ()`, donde el tipo de retorno indica el resultado de la acción.
+
+## Uso básico
+
+En Haskell, las acciones de `IO` se representan como valores, y se ejecutan en el momento adecuado, cuando se invoca el programa. Estas acciones se manejan de manera controlada, asegurando que el programa mantenga su modelo funcional.
+
+```haskell
+main :: IO ()
+main = do
+    -- Aquí van las acciones de entrada/salida
+    putStrLn "Hola, mundo!"
+```
+
 ## Manejo de Archivos
 
 Haskell proporciona funciones para abrir, leer, escribir y cerrar archivos. Las operaciones de lectura y escritura en archivos generalmente se hacen de forma secuencial, y cada una de estas acciones devuelve una accion IO.
