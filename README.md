@@ -18,15 +18,99 @@ Haskell surgio como un intento de estandarizar los lenguajes funcionales, unific
 
 - **Funciones como Ciudadanos de Primera Clase**: En Haskell, las funciones son tratadas como valores. Esto significa que las funciones pueden ser pasadas como parametros, retornadas como resultados, y almacenadas en variables. Esto permite una gran flexibilidad en el diseño y estructura de los programas.
 
+Funcion que toma otra funcion como parametro
+
+```Haskell
+-- Firma de la funcion
+aplicarFuncion :: (Int -> Int) -> Int -> Int
+
+-- Cuerpo de la funcion que toma una funcion como parametro
+aplicarFuncion f x = f x
+```
+Función que retorna otra función
+
+```Haskell
+-- Firma de la funcion
+crearMultiplicador :: Int -> (Int -> Int)
+
+-- Cuerpo de la funcion que retorna una funcion
+crearMultiplicador x = \y -> x * y
+```
+
+Almacenando una función en una variable
+
+```Haskell
+-- Definir una funcion
+doblar :: Int -> Int
+doblar x = x * 2
+
+-- Almacenar la funcion en una variable
+miFuncion = doblar
+
+-- Usar la funcion almacenada
+resultado = miFuncion 5  -- Esto retorna 10
+```
+
 - **Inmutabilidad**: En la programacion funcional, las variables no se pueden modificar una vez que han sido asignadas. Esto se conoce como inmutabilidad. En Haskell, todas las estructuras de datos son inmutables por defecto, lo que ayuda a evitar errores relacionados con cambios inesperados en los valores.
+
+```Haskell
+  -- Asignamos un valor a la variable x
+x = 5
+
+-- Intentar cambiar el valor de x en otro lugar causaría un error
+-- x = 10  -- Esto dará un error, ya que x no puede ser modificada
+
+-- Sin embargo, podemos crear nuevas variables basadas en x
+y = x + 2   -- y tendrá el valor 7, pero x sigue siendo 5
+```
 
 - **Recursividad**: La recursividad es una herramienta central en la programacion funcional. En lugar de usar bucles iterativos, las funciones en Haskell tienden a ser definidas recursivamente. La recursividad permite que los problemas sean descompuestos en subproblemas más pequeños y manejables.
 
+```Haskell
+-- Definicion de la funcion factorial de manera recursiva
+factorial :: Integer -> Integer
+factorial 0 = 1  -- Caso base
+factorial n = n * factorial (n - 1)  -- Paso recursivo
+```
+Explicación:
+Caso base: Cuando el valor de n es 0, el resultado es 1. Este es el caso base de la recursión, que detiene la ejecución.
+
+Paso recursivo: Para cualquier otro valor de n, la función se llama a sí misma, multiplicando n por el resultado de factorial(n - 1). Esto continúa hasta llegar al caso base.
+
 - **Funciones Puramente Funcionales**: Las funciones en Haskell no tienen efectos secundarios, es decir, no alteran el estado del programa ni interactuan con el mundo exterior (como la entrada/salida o la modificacion de variables globales). Esto se conoce como pureza funcional, y hace que las funciones sean más predecibles y fáciles de razonar.
+
+```Haskell
+-- Definicion de una funcion puramente funcional
+sumaDeCuadrados :: Num a => a -> a -> a
+sumaDeCuadrados x y = x * x + y * y
+```
 
 - **Composicion de Funciones**: La composicion de funciones es un principio fundamental en la programacion funcional. En Haskell, las funciones pueden ser combinadas para formar nuevas funciones. La composicion permite construir programas modulares y reutilizables.
 
+```Haskell
+-- Definicion de funciones simples
+incrementar :: Num a => a -> a
+incrementar x = x + 1
+
+duplicar :: Num a => a -> a
+duplicar x = x * 2
+
+-- Composicion de funciones
+incrementarYDuplicar :: Num a => a -> a
+incrementarYDuplicar = duplicar . incrementar
+```
+
 - **Evaluacion Perezosa (Lazy Evaluation)**: Haskell utiliza evaluacion perezosa, lo que significa que las expresiones no se evaluan hasta que realmente son necesarias. Esto permite la creacion de estructuras de datos infinitas y mejora la eficiencia al evitar el calculo de valores innecesarios.
+
+```Haskell
+-- Definicion de una lista infinita
+numerosNaturales :: [Integer]
+numerosNaturales = [1..]
+
+-- Tomar los primeros 5 numeros de la lista infinita
+primerosCinco :: [Integer]
+primerosCinco = take 5 numerosNaturales
+```
 
 - **Tipo de Tipado**: Haskell tiene un sistema de tipos estatico y fuerte. Los tipos son inferidos automaticamente por el compilador, lo que permite al programador escribir codigo sin tener que especificar todos los tipos de manera explicita. El sistema de tipos tambien soporta el tipado polimorfico, lo que permite escribir funciones generales que pueden operar sobre una variedad de tipos de datos.
 
@@ -39,3 +123,45 @@ Haskell surgio como un intento de estandarizar los lenguajes funcionales, unific
 - **Sin Efectos Secundarios**: La ausencia de efectos secundarios en Haskell hace que el lenguaje sea especialmente adecuado para la programacion concurrente y paralela, ya que los cambios en el estado global no afectan el comportamiento de otras partes del programa. Esto facilita la razonabilidad del codigo y la ejecucion en entornos concurrentes.
 
 - **Tratamiento de Errores con Monadas**: Haskell utiliza el concepto de monadas para manejar efectos secundarios y errores de manera funcional. Las monadas permiten modelar operaciones que pueden tener efectos secundarios (como la lectura de un archivo o la entrada del usuario) de una manera que mantiene la pureza funcional del lenguaje.
+
+## Qué son las Mónadas
+
+Las mónadas son estructuras que permiten:
+
+1. **Encapsular errores**: Proveen una forma de manejar cálculos que pueden fallar o devolver un resultado inválido.
+2. **Encadenar operaciones**: Facilitan la ejecución secuencial de operaciones, propagando errores automáticamente.
+3. **Mantener la pureza funcional**: Al encapsular efectos secundarios, las mónadas evitan modificaciones del estado global y aseguran que las funciones sigan siendo predecibles.
+
+## Principales Mónadas para Manejo de Errores
+
+### Mónada `Maybe`
+
+La mónada `Maybe` se utiliza para representar cálculos que pueden fallar. Tiene dos posibles valores:
+
+- `Just x`: Indica que el cálculo fue exitoso y devolvió el valor `x`.
+- `Nothing`: Indica que el cálculo falló.
+
+Esta estructura es útil cuando se requiere modelar la ausencia de un valor sin necesidad de usar valores nulos.
+
+### Mónada `Either`
+
+La mónada `Either` extiende la funcionalidad de `Maybe` permitiendo agregar información sobre el error. Tiene dos posibles valores:
+
+- `Left e`: Indica un error, acompañado de información adicional `e`.
+- `Right x`: Indica que el cálculo fue exitoso y devolvió el valor `x`.
+
+`Either` es ideal para manejar errores con contexto, como mensajes de error o códigos específicos.
+
+## Características del Uso de Mónadas para Manejo de Errores
+
+1. **Encapsulación de Errores**: Las mónadas encapsulan errores de forma segura, eliminando la necesidad de manejar excepciones o valores nulos.
+2. **Propagación Automática**: Los errores se propagan automáticamente a través de las operaciones encadenadas, evitando la necesidad de comprobaciones manuales en cada paso.
+3. **Separación de Responsabilidades**: Permiten separar la lógica principal del manejo de errores, mejorando la claridad y modularidad del código.
+4. **Pureza Funcional**: Al tratar los errores como datos, se evita la dependencia de estados mutables o efectos secundarios.
+
+## Ventajas de Utilizar Mónadas
+
+- **Claridad**: Proveen una forma explícita y declarativa de manejar errores.
+- **Reusabilidad**: Las funciones que operan sobre mónadas son más fáciles de reutilizar debido a su naturaleza genérica.
+- **Control**: Facilitan un control preciso sobre cómo se manejan y propagan los errores en un programa.
+
