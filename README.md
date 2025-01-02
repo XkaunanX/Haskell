@@ -140,6 +140,31 @@ Las mónadas son estructuras que permiten:
 2. **Encadenar operaciones**: Facilitan la ejecución secuencial de operaciones, propagando errores automáticamente.
 3. **Mantener la pureza funcional**: Al encapsular efectos secundarios, las mónadas evitan modificaciones del estado global y aseguran que las funciones sigan siendo predecibles.
 
+Ejemplo:
+
+```haskell
+-- Función que divide dos números, puede fallar si el divisor es 0
+dividir :: Int -> Int -> Maybe Int
+dividir _ 0 = Nothing  -- Error si el divisor es 0
+dividir x y = Just (x `div` y)  -- Devuelve el resultado si es válido
+
+-- Función que multiplica el resultado de dividir dos números
+operacion :: Int -> Int -> Int -> Maybe Int
+operacion x y z = do
+  a <- dividir x y  -- Primero se divide x por y
+  b <- dividir a z  -- Luego, se divide el resultado por z
+  return b           -- Devuelve el resultado final
+
+-- Ejemplo de uso
+main :: IO ()
+main = do
+  let resultado = operacion 10 2 5
+  print resultado  -- Imprime Just 1 (ya que (10 / 2) / 5 = 1)
+
+  let resultadoFallido = operacion 10 0 5
+  print resultadoFallido  -- Imprime Nothing (porque la división por 0 falla)
+```
+
 ### Principales Mónadas para Manejo de Errores
 
 #### Mónada `Maybe`
