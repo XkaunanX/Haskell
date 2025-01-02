@@ -12,6 +12,14 @@ La estructura de una funcion en Haskell consta de tres partes principales:
 
 3. **Cuerpo de la funcion**: El cuerpo de la funcion es donde se define la logica que debe ejecutarse. Cada tipo de funcion tiene su propia estructura de cuerpo, dependiendo de su forma de definicion.
 
+```Haskell
+-- Firma de la funcion
+suma :: Int -> Int -> Int
+
+-- Cuerpo de la funcion
+suma x y = x + y
+```
+
 ## Componentes Detallados
 
 ### Firma de la Funcion
@@ -24,17 +32,55 @@ La firma de la funcion indica el tipo de los parametros de entrada y el tipo de 
 
 Las **funciones simples** son aquellas que se definen con una sola ecuacion, sin condiciones ni patrones complejos. Estas funciones son directas y no dependen de ninguna forma especial de entrada. Su definicion es generalmente simple y clara, operando sobre los parametros directamente.
 
+```Haskell
+-- Firma de la funcion
+suma :: Int -> Int -> Int
+
+-- Cuerpo de la funcion
+suma x y = x + y
+```
+
 #### Funciones Recursivas
 
 Las **funciones recursivas** son funciones que se llaman a si mismas durante su ejecucion. Este tipo de funcion es comun en Haskell debido a su fuerte enfoque en la recursividad en lugar de la iteracion. Las funciones recursivas son utiles cuando se trata de estructuras de datos como listas o arboles, ya que permiten dividir un problema en subproblemas mas pequenos de forma eficiente.
+
+```Haskell
+-- Firma de la funcion
+longitud :: [a] -> Int
+
+-- Cuerpo de la funcion (recursiva)
+longitud [] = 0
+longitud (_:xs) = 1 + longitud xs
+```
 
 #### Funciones con Guardas
 
 Las **funciones con guardas** utilizan condiciones adicionales (guardas) para determinar el comportamiento de la funcion. Estas condiciones se escriben con el simbolo `|` y evaluan expresiones booleanas que controlan el flujo de la funcion. Las guardas permiten definir casos diferentes dentro de la misma funcion, especificando lo que debe ocurrir bajo ciertas condiciones. Son similares a los "if" de otros lenguajes, pero con una sintaxis mas limpia y declarativa.
 
+```Haskell
+-- Firma de la funcion
+mayorQue10 :: Int -> String
+
+-- Cuerpo de la funcion con guardas
+mayorQue10 x
+    | x > 10 = "Mayor que 10"
+    | x == 10 = "Es igual a 10"
+    | otherwise = "Menor que 10"
+```
+
 #### Funciones Locales
 
 Las **funciones locales** son funciones que se definen dentro de otra funcion. Esto permite que una funcion utilice otra funcion sin necesidad de hacerla global. Las funciones locales son utiles cuando se necesita realizar una operacion auxiliar que solo tiene sentido dentro del contexto de la funcion principal. Se definen usando la palabra clave `where` y se colocan al final de la definicion de la funcion principal.
+
+```Haskell
+-- Firma de la funcion
+producto :: Int -> Int -> Int
+
+-- Cuerpo de la funcion con una funcion local
+producto x y = resultado
+    where
+        resultado = x * y
+```
 
 ### Cuerpo de la Funcion
 
